@@ -20,6 +20,13 @@ namespace Web_API_Versioning2
 
             });
 
+            //add Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer
+            builder.Services.AddVersionedApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
+            });
+
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
