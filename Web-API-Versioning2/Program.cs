@@ -12,7 +12,11 @@ namespace Web_API_Versioning2
             builder.Services.AddControllers();
 
             //add Microsoft.AspNetCore.Mvc.Versioning
-            builder.Services.AddApiVersioning();
+            builder.Services.AddApiVersioning(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+
+            });
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
