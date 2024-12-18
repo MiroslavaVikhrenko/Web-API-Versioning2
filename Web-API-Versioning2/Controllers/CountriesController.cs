@@ -14,10 +14,10 @@ namespace Web_API_Versioning2.Controllers
             var countriesDomainModel = CountriesData.Get();
 
             //Map Domain Model to DTO
-            var response = new List<CountryDto>();
+            var response = new List<CountryDtoV1>();
             foreach (var country in countriesDomainModel)
             {
-                response.Add(new CountryDto
+                response.Add(new CountryDtoV1
                 {
                     Id = country.Id,
                     Name = country.Name,
