@@ -10,6 +10,7 @@ namespace Web_API_Versioning2.Controllers
     [ApiVersion("2.0")]
     public class CountriesController : ControllerBase
     {
+        [MapToApiVersion("1.0")]
         [HttpGet]
         public IActionResult GetV1()
         {
@@ -28,6 +29,7 @@ namespace Web_API_Versioning2.Controllers
             return Ok(response);
         }
 
+        [MapToApiVersion("2.0")]
         [HttpGet]
         public IActionResult GetV2()
         {
