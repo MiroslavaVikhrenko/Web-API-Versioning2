@@ -4,8 +4,9 @@ using Web_API_Versioning2.Models.DTOs;
 
 namespace Web_API_Versioning2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")] //to capture the version
     [ApiController]
+    //supported versions:
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
     public class CountriesController : ControllerBase
