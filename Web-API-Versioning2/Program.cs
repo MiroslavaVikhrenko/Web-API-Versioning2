@@ -33,6 +33,8 @@ namespace Web_API_Versioning2
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            // Inject ConfigureSwaggerOptions
+            builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 
             var app = builder.Build();
 
