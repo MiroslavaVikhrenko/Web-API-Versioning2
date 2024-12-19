@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+
 namespace Web_API_Versioning2
 {
     public class Program
@@ -34,11 +36,22 @@ namespace Web_API_Versioning2
 
             var app = builder.Build();
 
+            // Get the service from services collection after the app has built
+            var versionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                //register all the API descriptions available in the provider
+                app.UseSwaggerUI(options =>
+                {
+                    foreach (var description in versionDescriptionProvider.ApiVersionDescriptions)
+                    {
+                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+                            description.GroupName.ToUpperInvariant()); //parameters: url and name
+                    }
+                });
             }
 
             app.UseHttpsRedirection();
